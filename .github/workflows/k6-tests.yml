@@ -40,13 +40,13 @@ jobs:
           sudo apt-get install k6
 
       - name: Run Smoke Tests
-        run: k6 run tests/main.js --env TEST_TYPE=smoke
+        run: k6 run dist/main.js --env TEST_TYPE=smoke
 
       - name: Run Auth Tests
-        run: k6 run tests/scenarios/auth.test.js
+        run: k6 run dist/auth.test.js
 
       - name: Run Contact Tests
-        run: k6 run tests/scenarios/contacts.test.js
+        run: k6 run dist/contacts.test.js
 
   load-test:
     name: Load Test
@@ -66,7 +66,7 @@ jobs:
           sudo apt-get install k6
 
       - name: Run Load Tests
-        run: k6 run tests/load-test.js
+        run: k6 run dist/load-test.js
 
   stress-test:
     name: Stress Test
@@ -86,7 +86,7 @@ jobs:
           sudo apt-get install k6
 
       - name: Run Stress Tests
-        run: k6 run tests/stress-test.js
+        run: k6 run dist/stress-test.js
 
   negative-tests:
     name: Negative Scenario Tests
