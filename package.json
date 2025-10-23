@@ -1,0 +1,46 @@
+{
+  "name": "k6-contactlist-automation",
+  "version": "1.0.0",
+  "description": "K6 Performance Testing Suite for Contact List API (TypeScript)",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "test": "npm run build && k6 run dist/main.js --out json=reports/results.json",
+    "test:refactored": "npm run build && k6 run dist/main-refactored.js --out json=reports/results.json",
+    "test:smoke": "npm run build && k6 run dist/main.js --env TEST_TYPE=smoke --out json=reports/smoke-results.json",
+    "test:load": "npm run build && k6 run dist/load-test.js --out json=reports/load-results.json",
+    "test:stress": "npm run build && k6 run dist/stress-test.js --out json=reports/stress-results.json",
+    "test:spike": "npm run build && k6 run dist/main.js --env TEST_TYPE=spike --out json=reports/spike-results.json",
+    "test:auth": "npm run build && k6 run dist/auth.test.js --out json=reports/auth-results.json",
+    "test:contacts": "npm run build && k6 run dist/contacts.test.js --out json=reports/contacts-results.json",
+    "test:prod": "npm run build && k6 run dist/main.js --env ENVIRONMENT=production --out json=reports/prod-results.json",
+    "test:qa": "npm run build && k6 run dist/main.js --env ENVIRONMENT=qa --out json=reports/qa-results.json",
+    "test:staging": "npm run build && k6 run dist/main.js --env ENVIRONMENT=staging --out json=reports/staging-results.json",
+    "report": "node scripts/generate-report.js",
+    "test:report": "npm run test:refactored && npm run report",
+    "watch": "webpack --watch --mode development",
+    "lint": "eslint . --ext .ts",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist/ reports/"
+  },
+  "keywords": [
+    "k6",
+    "performance-testing",
+    "load-testing",
+    "api-testing",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/k6": "^0.52.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "eslint": "^8.50.0",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

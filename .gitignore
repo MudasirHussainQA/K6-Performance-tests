@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.env
+.env.local
+.DS_Store
+*.log
+reports/*.json
+reports/*.html
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# TypeScript
+*.tsbuildinfo
+
+# Build artifacts
+build/
+
+# Keep report directory structure
+!reports/.gitkeep
